@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>test-parent</artifactId>
+        <groupId>xiongjiyuan</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>test-coverage</artifactId>
+
+    <properties>
+        <build.directory.projecta>../testcore/target</build.directory.projecta>
+        <build.directory.projectb>../testunit/target</build.directory.projectb>
+
+        <classes.directory.projecta>../testcore/target/classes</classes.directory.projecta>
+        <classes.directory.projectb>../testunit/target/classes</classes.directory.projectb>
+
+        <sources.directory.projecta>../testcore/src/main/java</sources.directory.projecta>
+        <sources.directory.projectb>../testunit/src/main/java</sources.directory.projectb>
+
+        <generated-sources.directory.projecta>../testcore/target/generated-sources/annotations</generated-sources.directory.projecta>
+        <generated-sources.directory.projectb>../testunit/target/generated-sources/annotations</generated-sources.directory.projectb>
+    </properties>
+
+    <!--<build>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-dependency-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--&lt;!&ndash; Copy the ant tasks jar. Needed for ts.jacoco.report-ant . &ndash;&gt;-->
+                    <!--<execution>-->
+                        <!--<id>jacoco-dependency-ant</id>-->
+                        <!--<goals>-->
+                            <!--<goal>copy</goal>-->
+                        <!--</goals>-->
+                        <!--<phase>process-test-resources</phase>-->
+                        <!--<inherited>false</inherited>-->
+                        <!--<configuration>-->
+                            <!--<artifactItems>-->
+                                <!--<artifactItem>-->
+                                    <!--<groupId>org.jacoco</groupId>-->
+                                    <!--<artifactId>org.jacoco.ant</artifactId>-->
+                                    <!--<version>0.7.9</version>-->
+                                <!--</artifactItem>-->
+                            <!--</artifactItems>-->
+                            <!--<stripVersion>true</stripVersion>-->
+                            <!--<outputDirectory>${basedir}/target/jacoco-jars</outputDirectory>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-antrun-plugin</artifactId>-->
+                <!--<version>1.6</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<phase>compile</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>run</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<target>-->
+                                <!--&lt;!&ndash; Execute an ant task within maven &ndash;&gt;-->
+                                <!--<echo message="Hello World from pom.xml"/>-->
+
+                                <!--<taskdef name="report" classname="org.jacoco.ant.ReportTask">-->
+                                    <!--<classpath path="${basedir}/target/jacoco-jars/org.jacoco.ant.jar" />-->
+                                <!--</taskdef>-->
+
+                                <!--<mkdir dir="${basedir}/target/coverage-report" />-->
+
+                                <!--<report>-->
+                                    <!--<executiondata>-->
+                                        <!--<fileset dir="${build.directory.projecta}">-->
+                                            <!--<include name="jacoco.exec" />-->
+                                        <!--</fileset>-->
+                                        <!--<fileset dir="${build.directory.projectb}">-->
+                                            <!--<include name="jacoco.exec" />-->
+                                        <!--</fileset>-->
+                                    <!--</executiondata>-->
+                                    <!--<structure name="JaCoCo-Multi Project">-->
+                                        <!--<group name="JaCoCo-Multi">-->
+                                            <!--<classfiles>-->
+                                                <!--<fileset dir="${classes.directory.projecta}" />-->
+                                                <!--<fileset-->
+                                                        <!--dir="${classes.directory.projectb}" />-->
+                                            <!--</classfiles>-->
+                                            <!--<sourcefiles encoding="UTF-8">-->
+                                                <!--<fileset dir="${sources.directory.projecta}" />-->
+                                                <!--<fileset-->
+                                                        <!--dir="${sources.directory.projectb}"></fileset>-->
+                                                <!--<fileset-->
+                                                        <!--dir="${generated-sources.directory.projecta}"></fileset>-->
+                                                <!--<fileset-->
+                                                        <!--dir="${generated-sources.directory.projectb}"></fileset>-->
+                                            <!--</sourcefiles>-->
+                                        <!--</group>-->
+                                    <!--</structure>-->
+                                    <!--<html destdir="${basedir}/target/coverage-report/html" />-->
+                                    <!--<xml destfile="${basedir}/target/coverage-report/coverage-report.xml" />-->
+                                    <!--<csv destfile="${basedir}/target/coverage-report/coverage-report.csv" />-->
+                                <!--</report>-->
+                            <!--</target>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+                <!--<dependencies>-->
+                    <!--<dependency>-->
+                        <!--<groupId>org.jacoco</groupId>-->
+                        <!--<artifactId>org.jacoco.ant</artifactId>-->
+                        <!--<version>0.7.9</version>-->
+                    <!--</dependency>-->
+                <!--</dependencies>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</build>-->
+</project>
